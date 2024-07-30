@@ -1,0 +1,261 @@
+@media screen and (max-width: 1400px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+  .about-containers {
+    flex-wrap: wrap;
+  }
+  #contact,
+  #projects {
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    margin-top: 0;
+  }
+  #desktop-nav {
+    display: none;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+  #hamburger-nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 11vh;
+    padding: 0 1rem; 
+  }
+  .logo {
+    display: none;
+  }
+  .toggle-container {
+    position: relative;
+    left: 0;
+    top: -10px;
+  }
+  .hamburger-menu {
+    position: relative;
+    right: 1rem;
+  }
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+  #profile{
+    display: flex;
+  }
+  .section-container {
+    display: block;
+  }
+  .arrow {
+    display: none;
+  }
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  section {
+    margin: 0 5%;
+  }
+  .profile__section__pic-container{
+    display: flex;
+    align-items: center;
+    height: 220px;
+    width: 220px;
+    margin-bottom: auto 0;
+  }
+  .section__pic-container {
+    width: 225px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    justify-content: center;
+  }
+  .about-pic{
+    width: 100%;
+    height: auto;
+  }
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+  article {
+    font-size: 1rem;
+  }
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  .about-section-containers {
+    display: grid;
+    grid-template-columns: 1fr; 
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  .contact-info-container {
+    margin: 0;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .logo {
+    display: none;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .profile__section__pic-container{
+    display: flex;
+    align-items: center;
+    height: 175px;
+    width: 175px;
+    margin-bottom: auto 0;
+  }
+
+  .section__pic-container {
+    width: 45vw;
+    height: 60vw;
+    justify-content: center;
+  }
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .text-container {
+    text-align: justify;
+  }
+
+  #about .fa-angles-down,
+  #skills .fa-angles-down,
+  #experience .fa-angles-down,
+  #projects .fa-angles-down {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    margin: 0;
+  }
+  #contact,
+  footer {
+    height: 40vh;
+  }
+  #profile {
+    padding-top: 37px;
+    height: 83vh;
+    margin-bottom: 0;
+  }
+  article {
+    font-size: 1rem;
+  }
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  .about-section-containers {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  .contact-info-container {
+    margin: 0;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .logo {
+    display: none;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .profile__section__pic-container {
+    display: flex;
+    align-items: center;
+    height: 175px;
+    width: 175px;
+    margin-bottom: auto 0;
+  }
+  .section__pic-container {
+    width: 45vw;
+    height: 60vw;
+    justify-content: center;
+  }
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .text-container {
+    text-align: justify;
+  }
+
+  #about .fa-angles-down,
+  #skills .fa-angles-down,
+  #experience .fa-angles-down,
+  #projects .fa-angles-down {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width:430px) {
+  footer {
+    margin-top: 25px;
+  }
+  
+}
+
+@media screen and (max-width: 300px) {
+  #profile {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+  .about-containers {
+    display: grid;
+  }
+}
+
+
+
+
+
+

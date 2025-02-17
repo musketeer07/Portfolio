@@ -268,3 +268,7 @@ document.querySelector('button[onclick*="#contact"]').addEventListener('click', 
 document.querySelector('.heart-icon').addEventListener('click', function() {
   window.open('index1.html', '_blank');
 });
+
+
+
+

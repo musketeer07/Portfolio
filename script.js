@@ -55,79 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// // for projects infinite scrolling effect
-// document.addEventListener('DOMContentLoaded', function() {
-//   const projectsContainer = document.getElementById('projects-slider');
-
-//   // Function to add a new project
-//   function addProject(imageUrl, title, link) {
-//     const projectDiv = document.createElement('div');
-//     projectDiv.className = 'project';
-//     projectDiv.innerHTML = `
-//       <img src="${imageUrl}" alt="${title}" class="project-img" />
-//       <h2 class="project-title">${title}</h2>
-//       <button class="new_btn" onclick="location.href='${link}'">Github</button>
-//     `;
-//     projectsContainer.appendChild(projectDiv);
-//   }
-
-//   // Example projects to add
-//   addProject('./assets/sign_language.jpeg', 'Sign Language Recognition', 'https://github.com/musketeer07/American-Sign-Language');
-//   addProject('./assets/netflix.jpeg', 'Recommendation Engine', 'https://github.com/musketeer07/movie-recommendation-engine.git');
-//   addProject('./assets/flight_tracker.png', 'Flight Tracker', 'https://github.com/musketeer07/Flight-Tracker');
-//   addProject('./assets/wecare.png','We Care', 'https://github.com/musketeer07/We-Care.git');
-//   addProject('./assets/indianStartups.png', 'Startup Funding Trends', 'https://github.com/musketeer07/Startup-Funding-Trends.git');
-
-//   // Function to clone the project items to create a continuous scroll effect
-//   function cloneProjects() {
-//     const projects = document.querySelectorAll('#projects-slider .project');
-//     projects.forEach(project => {
-//       const clone = project.cloneNode(true);
-//       projectsContainer.appendChild(clone);
-//     });
-//   }
-
-//   // Clone projects to create an infinite scroll effect
-//   cloneProjects();
-
-//   // Infinite scroll effect
-//   let scrollInterval;
-//   function scrollProjects() {
-//     const scrollAmount = 0.5; // Adjust the scroll speed
-//     projectsContainer.scrollLeft += scrollAmount;
-
-//     const firstProject = projectsContainer.firstElementChild;
-//     const projectWidth = firstProject.clientWidth + parseInt(window.getComputedStyle(firstProject).marginRight);
-
-//     // Append the first project to the end when it's completely scrolled past
-//     if (projectsContainer.scrollLeft >= projectWidth) {
-//       projectsContainer.scrollLeft -= projectWidth;
-//       projectsContainer.appendChild(firstProject);
-//     }
-
-//     // Continue the scroll if not paused
-//     if (projectsContainer.dataset.scrollPaused !== 'true') {
-//       scrollInterval = requestAnimationFrame(scrollProjects);
-//     }
-//   }
-
-//   // Start the scroll on mouseover
-//   projectsContainer.addEventListener('mouseover', () => {
-//     projectsContainer.dataset.scrollPaused = 'false';
-//     scrollInterval = requestAnimationFrame(scrollProjects);
-//   });
-
-//   // Stop the scroll on mouseout
-//   projectsContainer.addEventListener('mouseout', () => {
-//     projectsContainer.dataset.scrollPaused = 'true';
-//     cancelAnimationFrame(scrollInterval);
-//   });
-// });
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  const projectsContainer = document.getElementById('projects-slider');
-  const projectsSection = document.getElementById('projects');
+  const projectsContainer = document.getElementById('projects-grid');
 
   // Function to add a new project
   function addProject(imageUrl, title, link) {
@@ -147,67 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
   addProject('./assets/flight_tracker.png', 'Flight Tracker', 'https://github.com/musketeer07/Flight-Tracker');
   addProject('./assets/wecare.png','We Care', 'https://github.com/musketeer07/We-Care.git');
   addProject('./assets/indianStartups.png', 'Startup Funding Trends', 'https://github.com/musketeer07/Startup-Funding-Trends.git');
-
-  // Function to clone the project items to create a continuous scroll effect
-  function cloneProjects() {
-    const projects = document.querySelectorAll('#projects-slider .project');
-    projects.forEach(project => {
-      const clone = project.cloneNode(true);
-      projectsContainer.appendChild(clone);
-    });
-  }
-
-  // Clone projects to create an infinite scroll effect
-  cloneProjects();
-
-  // Infinite scroll effect
-  let scrollInterval;
-  function scrollProjects() {
-    const scrollAmount = 0.5; // Adjust the scroll speed
-    projectsContainer.scrollLeft += scrollAmount;
-
-    const firstProject = projectsContainer.firstElementChild;
-    const projectWidth = firstProject.clientWidth + parseInt(window.getComputedStyle(firstProject).marginRight);
-
-    // Append the first project to the end when it's completely scrolled past
-    if (projectsContainer.scrollLeft >= projectWidth) {
-      projectsContainer.scrollLeft -= projectWidth;
-      projectsContainer.appendChild(firstProject);
-    }
-
-    // Continue the scroll if not paused
-    if (projectsContainer.dataset.scrollPaused !== 'true') {
-      scrollInterval = requestAnimationFrame(scrollProjects);
-    }
-  }
-
-  // Function to start scrolling
-  function startScroll() {
-    projectsContainer.dataset.scrollPaused = 'false';
-    scrollInterval = requestAnimationFrame(scrollProjects);
-  }
-
-  // Function to stop scrolling
-  function stopScroll() {
-    projectsContainer.dataset.scrollPaused = 'true';
-    cancelAnimationFrame(scrollInterval);
-  }
-
-  // Intersection Observer to detect when the projects section is in view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        startScroll();
-      } else {
-        stopScroll();
-      }
-    });
-  }, { threshold: 0.1 });
-
-  // Observe the projects section
-  observer.observe(projectsSection);
 });
-
 
 
 // Ensure smooth scrolling for navigation links
@@ -248,25 +117,77 @@ document.querySelectorAll('.fa-angles-down, footer a[href^="#"]').forEach(anchor
   });
 });
 
-// Smooth scroll for the contact info button
-document.querySelector('button[onclick*="#contact"]').addEventListener('click', function(e) {
-  e.preventDefault();
-  const targetElement = document.getElementById('contact');
 
-  if (targetElement) {
-    window.scrollTo({
-      top: targetElement.offsetTop,
-      behavior: 'smooth'
-    });
 
-    // Update the URL without reloading the page
-    history.pushState(null, null, '#contact');
+document.addEventListener('DOMContentLoaded', function() {
+  const experienceContainer = document.getElementById('experience-container');
+
+  // Function to render each experience item
+  function addExperience({ company, location, duration, title, image }) {
+      // Check if the experience already exists to prevent duplication
+      if (document.querySelector(`[data-company="${company}"]`)) return;
+      
+      const experienceDiv = document.createElement('div');
+      experienceDiv.className = 'experience-item';
+      experienceDiv.setAttribute('data-company', company); // Add unique identifier to avoid duplicates
+
+      experienceDiv.innerHTML = `
+          <div class="exp-details-container">
+              <div class="experience-img">
+                  <img src="${image}" alt="Experience Image" class="company-img" />
+              </div>
+              <h3 class="exp-sub-title">${company}</h3>
+              <h4 class="experience-location">${location}</h4>
+              <p class="experience-title">${title}</p>
+              <p class="experience-duration">${duration}</p>
+          </div>
+      `;
+      
+      experienceContainer.appendChild(experienceDiv);
   }
-});
+
+  // Add experiences dynamically
+  addExperience({
+    company: 'Accenture',
+    location: 'Montreal, Canada',
+    title: 'Senior Data Engineer',
+    duration: '(Nov 2024 - Present)',
+    image: './assets/accenture.png',
+  });
+
+  addExperience({
+    company: 'Intact Financial Corporation',
+    location: 'Montreal, Canada',
+    title: 'Data Engineering Developer Intern',
+    duration: '(Sept 2023- April 2024)',
+    image: './assets/intact.webp',
+  });
+
+  addExperience({
+    company: 'Evalueserve',
+    location: 'Gurgaon, India',
+    title: 'Data Engineer',
+    duration: '(July 2021 - August 2022)',
+    image: './assets/evalueserve.png',
+  });
+
+  addExperience({
+    company: 'SpreadIt',
+    location: 'New Delhi, India',
+    title: 'Data Analyst Intern',
+    duration: '(Dec 2020 - July 2021)',
+    image: './assets/spreadit.png',
+  });
+
+  addExperience({
+    company: 'Career Launcher',
+    location: 'New Delhi, India',
+    title: 'Machine Learning Intern',
+    duration: '(May 2020 - July 2020)',
+    image: './assets/career-launcher.jpeg',
+  });
 
 
-document.querySelector('.heart-icon').addEventListener('click', function() {
-  window.open('index1.html', '_blank');
 });
 
 
